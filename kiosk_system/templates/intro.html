@@ -1,0 +1,476 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Welcome | JIT Kiosk</title>
+
+    <style>
+        * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Segoe UI", sans-serif;
+    overflow: hidden;
+}
+
+
+/* Full screen */
+
+.intro-screen {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    overflow: hidden;
+
+    background: #072A6C;
+}
+
+
+/* Background image */
+
+.background {
+    position: absolute;
+    inset: 0;
+
+    background-image: url("{% static 'jit.jpg' %}");
+    background-size: cover;
+    background-position: center;
+
+    animation: campusZoom 12s ease-in-out infinite alternate;
+
+    z-index: 0;
+}
+
+@keyframes campusZoom {
+    from {
+        transform: scale(1);
+    }
+
+    to {
+        transform: scale(1.08);
+    }
+}
+
+@keyframes campusZoom {
+
+    0% {
+        transform: scale(1);
+    }
+
+    100% {
+        transform: scale(1.08);
+    }
+
+}
+.overlay {
+    position: absolute;
+    inset: 0;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(7, 42, 108, 0.72),
+            rgba(0, 0, 0, 0.30)
+        );
+
+    z-index: 1;
+}
+.overlay::before {
+    content: "";
+
+    position: absolute;
+    top: -100%;
+    left: -50%;
+
+    width: 35%;
+    height: 300%;
+
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255,255,255,0.15),
+        transparent
+    );
+
+    transform: rotate(25deg);
+
+    animation: lightMove 7s linear infinite;
+}
+
+@keyframes lightMove {
+
+    0% {
+        left: -60%;
+    }
+
+    100% {
+        left: 120%;
+    }
+
+}
+
+
+/* Zoom animation */
+
+@keyframes backgroundZoom {
+
+    from {
+        transform: scale(1.15);
+    }
+
+    to {
+        transform: scale(1);
+    }
+
+}
+
+
+/* Dark overlay */
+
+.overlay {
+    position: absolute;
+    inset: 0;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(7,42,108,0.88),
+            rgba(0,0,0,0.45)
+        );
+}
+
+
+/* Content */
+
+.content {
+    position: relative;
+
+    text-align: center;
+    color: white;
+
+    z-index: 2;
+
+    animation: contentAppear 1.4s ease-out;
+}
+
+
+/* Logo */
+
+.college-logo {
+
+    width: 150px;
+    height: 150px;
+
+    object-fit: contain;
+
+    margin-bottom: 20px;
+
+    animation:
+        logoAppear 1.2s ease-out,
+        logoFloat 3s ease-in-out 1.2s infinite;
+}
+
+
+/* Logo entrance */
+
+@keyframes logoAppear {
+
+    from {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+}
+
+
+/* Gentle floating */
+
+@keyframes logoFloat {
+
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-8px);
+    }
+
+}
+
+
+/* College name */
+
+h1 {
+
+    font-size: clamp(28px, 4vw, 55px);
+
+    font-weight: 800;
+
+    letter-spacing: 2px;
+
+    margin-bottom: 10px;
+
+    animation: titleAppear 1s ease-out 0.5s both;
+}
+
+
+/* Subtitle */
+
+.subtitle {
+
+    font-size: 20px;
+
+    opacity: 0.9;
+
+    animation: titleAppear 1s ease-out 0.8s both;
+}
+
+
+/* Welcome */
+
+.welcome {
+
+    font-size: 21px;
+
+    margin-top: 25px;
+
+    animation: titleAppear 1s ease-out 1.1s both;
+}
+
+
+/* Line */
+
+.line {
+
+    width: 0;
+
+    height: 3px;
+
+    background: #FFBF00;
+
+    margin: 20px auto;
+
+    animation: lineGrow 1s ease-out 1s forwards;
+}
+
+
+@keyframes lineGrow {
+
+    to {
+        width: 180px;
+    }
+
+}
+
+
+/* Text entrance */
+
+@keyframes titleAppear {
+
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+
+/* Content entrance */
+
+@keyframes contentAppear {
+
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+}
+
+
+/* Enter button */
+
+.enter-btn {
+
+    margin-top: 35px;
+
+    padding: 16px 35px;
+
+    border: 2px solid white;
+
+    border-radius: 50px;
+
+    background: #FFBF00;
+
+    color: #072A6C;
+
+    font-size: 18px;
+
+    font-weight: 800;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+
+    animation:
+        buttonAppear 1s ease-out 1.5s both,
+        buttonPulse 2s ease-in-out 2.5s infinite;
+}
+
+
+/* Button hover */
+
+.enter-btn:hover {
+
+    transform: scale(1.08);
+
+    box-shadow:
+        0 0 20px rgba(255,191,0,0.7);
+
+}
+
+
+/* Button pulse */
+
+@keyframes buttonPulse {
+
+    0%, 100% {
+        box-shadow: 0 0 0 rgba(255,191,0,0);
+    }
+
+    50% {
+        box-shadow:
+            0 0 25px rgba(255,191,0,0.6);
+    }
+
+}
+
+
+@keyframes buttonAppear {
+
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+
+/* Exit animation */
+
+.intro-screen.exit {
+
+    animation: exitScreen 0.7s ease-in forwards;
+
+}
+
+
+@keyframes exitScreen {
+
+    from {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    to {
+        opacity: 0;
+        transform: scale(1.08);
+    }
+
+}
+    </style>
+
+    
+</head>
+
+<body>
+
+    <div class="intro-screen">
+
+        <!-- Background -->
+        <div class="background"></div>
+
+        <!-- Dark overlay -->
+        <div class="overlay"></div>
+
+        <!-- Main Content -->
+        <div class="content">
+
+            <img src="{% static 'jit-logo.png' %}"
+                 class="college-logo">
+
+            <h1>JHULELAL INSTITUTE OF TECHNOLOGY</h1>
+
+            <p class="subtitle">
+                An Autonomous Institution
+            </p>
+
+            <div class="line"></div>
+
+            <p class="welcome">
+                Welcome to the Smart Campus Kiosk
+            </p>
+
+            <button onclick="enterKiosk()" class="enter-btn">
+                TAP TO ENTER
+                <span>→</span>
+            </button>
+         
+
+        </div>
+
+    </div>
+
+
+    <script>
+
+        function enterKiosk() {
+
+            // Button animation
+            document.querySelector(".intro-screen")
+                .classList.add("exit");
+
+            // Open home page
+            setTimeout(function() {
+
+                window.location.href = "{% url 'home' %}";
+
+            }, 700);
+
+        }
+
+    </script>
+
+</body>
+</html>

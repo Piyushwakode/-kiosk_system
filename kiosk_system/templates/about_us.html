@@ -1,0 +1,281 @@
+{%extends 'home.html'%}
+
+{% block title %}About Us {% endblock title %}
+
+
+{% block body %}
+
+
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f4f7fb;
+            color: #1f2937;
+        }
+
+        /* Header */
+        header {
+            background: #123b6d;
+            color: white;
+            padding: 22px 50px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .college-name {
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .page-title {
+            font-size: 22px;
+        }
+
+        /* Main Container */
+        .container {
+            width: 90%;
+            max-width: 1300px;
+            margin: 35px auto;
+        }
+
+        /* About Section */
+        .about-section {
+            background: white;
+            padding: 35px;
+            border-radius: 18px;
+            box-shadow: 0 5px 18px rgba(0,0,0,0.08);
+            margin-bottom: 30px;
+        }
+
+        .about-section h2 {
+            color: #123b6d;
+            font-size: 32px;
+            margin-bottom: 18px;
+        }
+
+        .about-section p {
+            font-size: 19px;
+            line-height: 1.7;
+            color: #555;
+        }
+
+        /* Information Cards */
+        .info-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+
+        .info-card {
+            background: white;
+            padding: 28px;
+            border-radius: 18px;
+            box-shadow: 0 5px 18px rgba(0,0,0,0.08);
+        }
+
+        .info-card h3 {
+            color: #123b6d;
+            font-size: 25px;
+            margin-bottom: 12px;
+        }
+
+        .info-card p {
+            font-size: 17px;
+            line-height: 1.6;
+            color: #555;
+        }
+
+        /* Admission Notice */
+        .admission-notice {
+            background: #fff8e1;
+            border: 2px solid #f4b400;
+            border-radius: 18px;
+            padding: 30px;
+            box-shadow: 0 5px 18px rgba(0,0,0,0.08);
+        }
+
+        .notice-heading {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .notice-heading h2 {
+            color: #a15c00;
+            font-size: 30px;
+        }
+
+        .notice-icon {
+            font-size: 35px;
+        }
+
+        .admission-notice h3 {
+            font-size: 24px;
+            margin-bottom: 12px;
+            color: #333;
+        }
+
+        .admission-notice p {
+            font-size: 18px;
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+
+        .date {
+            font-weight: bold;
+            color: #b45309;
+        }
+
+        /* Button */
+        .apply-btn {
+            display: inline-block;
+            margin-top: 18px;
+            padding: 15px 30px;
+            background: #123b6d;
+            color: white;
+            text-decoration: none;
+            border-radius: 10px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .apply-btn:hover {
+            background: #0d2d53;
+        }
+
+        /* Footer */
+        footer {
+            margin-top: 40px;
+            background: #123b6d;
+            color: white;
+            text-align: center;
+            padding: 18px;
+            font-size: 16px;
+        }
+
+        /* Kiosk / Tablet */
+        @media (max-width: 800px) {
+
+            header {
+                padding: 18px 25px;
+            }
+
+            .college-name {
+                font-size: 22px;
+            }
+
+            .page-title {
+                font-size: 18px;
+            }
+
+            .info-container {
+                grid-template-columns: 1fr;
+            }
+
+            .container {
+                width: 94%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="college-name">
+            Jhulelal Institute of Technology
+        </div>
+
+        <div class="page-title">
+            About Us
+        </div>
+    </header>
+
+
+    <main class="container">
+
+        <!-- About Us -->
+        <section class="about-section">
+
+            <h2>About Our Institution</h2>
+
+            <p>
+                Jhulelal Institute of Technology is committed to providing
+                quality technical education and creating an environment that
+                encourages innovation, knowledge and professional development.
+                The institution focuses on academic excellence, practical
+                learning and overall development of students.
+            </p>
+
+        </section>
+
+
+        <!-- Vision & Mission -->
+        <section class="info-container">
+
+            <div class="info-card">
+                <h3>🎯 Our Vision</h3>
+
+                <p>
+                    To develop technically skilled, innovative and responsible
+                    professionals who can contribute positively to society
+                    and the rapidly changing technological world.
+                </p>
+            </div>
+
+
+            <div class="info-card">
+                <h3>🚀 Our Mission</h3>
+
+                <p>
+                    To provide quality education, promote practical learning,
+                    encourage research and innovation, and prepare students
+                    for successful professional careers.
+                </p>
+            </div>
+
+        </section>
+
+
+        <!-- Admission Notice -->
+        <section class="admission-notice">
+
+            <div class="notice-heading">
+
+                <span class="notice-icon">📢</span>
+
+                <h2>Admission Notice</h2>
+
+            </div>
+            
+            <a href="#" class="apply-btn">
+                View Admission Details →
+            </a>
+
+        </section>
+
+    </main>
+
+
+    <!-- Footer -->
+    <footer>
+        © 2026 Jhulelal Institute of Technology | College Information Kiosk
+    </footer>
+
+</body>
+
+
+
+{% endblock body %}

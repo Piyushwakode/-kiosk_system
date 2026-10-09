@@ -1,0 +1,121 @@
+{% extends 'home.html' %}
+
+{% block title %}Help Desk{% endblock title %}
+
+{% block body %}
+    <style>
+    .portal-container {
+        width: 100%;
+        max-width: 1100px;
+        margin: 30px auto;
+        padding: 20px;
+
+    }
+
+    .portal-container h1 {
+        text-align: center;
+        font-size: 32px;    
+        margin-bottom: 8px;
+
+    }
+
+    .portal-subtitle {
+        text-align: center;
+        color: #666;
+        margin-bottom: 30px;
+        }
+
+    .portal-buttons {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        flex-wrap: wrap;
+    }
+    
+
+    .portal-button {
+        padding: 18px 30px;
+        min-width: 280px;
+        border-radius: 10px;
+        color: white;
+        text-decoration: none;
+        font-weight: bold;
+        text-align: center;
+        display: block;   /* makes whole box clickable */
+    }
+   
+
+    .sports-btn {
+        background: #007bff;
+    }
+    .sports-btn:hover,
+    .sports-btn.active {
+        background-color: #0056b3; /* darker blue */
+    }
+
+    .timetable-btn {
+        background: #28a745;
+   
+    }
+    .timetable-btn:hover,
+    .timetable-btn.active {
+       background-color: #218838; /* darker green */
+    }
+
+    .portal-guidelines {
+        max-width: 700px;
+        margin: 35px auto 0;
+        padding: 20px;
+        background: white;
+        border-radius: 10px;
+        box-shadow: 0 2px 8px rgba(0,0,0,.08);
+    }
+
+   .portal-button a {
+       color: white;
+       text-decoration: none;
+       display: block;
+        }
+   
+ 
+    </style>
+
+
+<body>
+    <br>
+<div class="portal-container">
+
+    <h1>Sports & Timetable Portal</h1>
+
+    <p class="portal-subtitle">
+        Quick access for students and teachers
+    </p>
+
+    <div class="portal-buttons">
+
+        <a href="/Book_Sports_Facilities"
+           class="portal-button sports-btn">
+            🏀 Book Sports Facilities
+        </a>
+         
+        <div class="portal-button timetable-btn">
+           <a class="{% if request.path == '/announcement_section/' %}active{% endif %}" href="{% url 'announcement_section' %}">📅 Time Table / Announcements</a>
+        </div>
+
+    </div>
+
+    <div class="portal-guidelines">
+        <h3>Usage Guidelines</h3>
+
+        <ul>
+            <li>Bookings are subject to availability.</li>
+            <li>Equipment must be returned in good condition.</li>
+            <li>Teachers can upload timetables or announcements.</li>
+            <li>Cancellations should be made at least 24 hours in advance.</li>
+        </ul>
+    </div>
+
+</div>
+</body>    
+{% endblock body %}
+

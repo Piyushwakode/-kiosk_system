@@ -1,0 +1,47 @@
+{% extends 'home.html' %}
+
+{% block title %}Help Desk{% endblock title %}
+
+{% block body %}
+<div class="container my-5">
+
+  <!-- Page Heading -->
+  <div class="text-center mb-4">
+    <h2 class="fw-bold text-primary">❓ Help Desk</h2>
+    <p class="text-muted">We are here to assist you anytime</p>
+  </div>
+
+  <!-- Help Options -->
+  <div class="row g-4">
+
+    <!-- Technical Support -->
+    <div class="col-md-6">
+      <div class="card shadow-sm h-100">
+        <div class="card-body">
+          <h5 class="card-title text-info">💻 Technical Support</h5>
+          <p class="card-text">Facing issues with the portal or login? Reach out to our IT team for quick fixes.</p>
+          <a href="mailto:techsupport@jit.edu" class="btn btn-outline-info">Contact IT</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Admissions Help -->
+    <div class="col-md-6">
+      <div class="card shadow-sm h-100">
+        <div class="card-body">
+          <h5 class="card-title text-success">📘 Admissions Help</h5>
+          <p class="card-text">Queries about admissions, forms, or deadlines? Our admin office is ready to guide you.</p>
+          <a href="mailto:admissions@jit.edu" class="btn btn-outline-success">Contact Admin</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- General Contact -->
+  <div class="alert alert-warning text-center mt-5" role="alert">
+    📞 Need immediate help? Call us at <strong>1800-123-456</strong> or email <strong>help@jit.edu</strong>.
+  </div>
+
+</div>
+{% endblock body %}

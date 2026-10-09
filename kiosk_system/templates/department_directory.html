@@ -1,0 +1,26 @@
+{%extends 'home.html'%}
+
+{% block title %}Department Directory {% endblock title %}
+
+{% block body %}
+     {% load static %}
+    <div class="container my-4">
+       <div class="row g-4"> <!-- g-4 = gap between columns -->
+
+    {% for n in departments %}
+      <div class="col-md-3">
+      <div class="card h-100 shadow-sm">
+        <img src="{{ n.image.url }}" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">{{ n.name }}</h5>
+          <p class="card-text">{{ n.position }} = {{ n.department }}</p>
+        </div>
+      </div>
+      <br><br>
+    </div>
+  
+    {% endfor %}
+
+
+
+{% endblock body %}

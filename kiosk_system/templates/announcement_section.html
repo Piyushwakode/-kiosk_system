@@ -1,0 +1,278 @@
+
+
+{%extends 'home.html'%}
+
+{% block title %}Anouncement {% endblock title %}
+
+{% block body %}
+{% load static %}
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+   body {
+    min-height: 100vh;
+    background: #f5f7fa;
+    padding: 30px;
+}
+
+        /* Main Announcement Card */
+
+        .announcement-card {
+            width: 100%;
+            max-width: 1100px;
+            background: white;
+            border-radius: 24px;
+            padding: 35px;
+            box-shadow: 0 10px 35px rgba(0, 0, 0, 0.12);
+          
+     
+        }
+        body {
+    min-height: 100vh;
+    background: #f5f7fa;
+    padding: 30px;
+    display: block; /* remove flex here */
+}
+
+/* Center only the announcement card */
+.announcement-card {
+    margin: 50px auto;   /* horizontally center */
+    max-width: 1100px;
+}
+
+
+        /* Header */
+
+        .header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border-bottom: 2px solid #eeeeee;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+
+        .header-icon {
+            font-size: 32px;
+        }
+
+        .header h1 {
+            font-size: 30px;
+            color: #1e293b;
+        }
+
+        /* Announcement with Image */
+
+        .announcement-with-image {
+            display: flex;
+            gap: 35px;
+            align-items: center;
+        }
+
+        .image-container {
+            width: 390px;
+            height: 260px;
+            flex-shrink: 0;
+            overflow: hidden;
+            border-radius: 18px;
+            cursor: pointer;
+        }
+
+        .image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: 0.3s;
+        }
+
+        .image-container img:hover {
+            transform: scale(1.04);
+        }
+
+        /* Text */
+
+        .announcement-text {
+            flex: 1;
+        }
+
+        .announcement-text h2 {
+            font-size: 30px;
+            color: #1e293b;
+            margin-bottom: 15px;
+        }
+
+        .announcement-text h3 {
+            font-size: 23px;
+            color: #334155;
+            margin-bottom: 15px;
+        }
+
+        .announcement-text p {
+            font-size: 19px;
+            color: #64748b;
+            line-height: 1.7;
+        }
+
+        .date {
+            margin-top: 20px;
+            font-size: 15px;
+            color: #64748b;
+        }
+
+        .tap-text {
+            margin-top: 12px;
+            font-size: 14px;
+            color: #2563eb;
+        }
+
+        /* Without Image */
+
+        .announcement-no-image {
+            text-align: center;
+            padding: 30px 80px;
+        }
+
+        .announcement-no-image h2 {
+            font-size: 32px;
+            color: #1e293b;
+            margin-bottom: 18px;
+        }
+
+        .announcement-no-image h3 {
+            font-size: 24px;
+            color: #334155;
+            margin-bottom: 18px;
+        }
+
+        .announcement-no-image p {
+            max-width: 800px;
+            margin: auto;
+            font-size: 20px;
+            color: #64748b;
+            line-height: 1.7;
+        }
+
+        /* Full Screen Image */
+
+        .modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.9);
+
+            justify-content: center;
+            align-items: center;
+
+            z-index: 999;
+        }
+
+        .modal img {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+            border-radius: 10px;
+        }
+
+        .close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+
+            color: white;
+            font-size: 45px;
+            cursor: pointer;
+        }
+
+        /* Responsive */
+
+        @media(max-width: 800px) {
+
+            .announcement-with-image {
+                flex-direction: column;
+            }
+
+            .image-container {
+                width: 100%;
+                height: 250px;
+            }
+
+            .announcement-no-image {
+                padding: 20px;
+            }
+        }
+        
+
+    </style>
+
+
+    <!-- ANNOUNCEMENT CARD -->
+ <div class="container">
+    <div style="text-align:center; margin-top:30px;">
+    <a href="javascript:history.back()" 
+       style="display:inline-block; padding:12px 25px; background:#007bff; color:white; 
+              text-decoration:none; border-radius:8px; font-weight:bold;">
+        ⬅ Back
+    </a>
+</div>
+
+    {% for n in announcements %}
+        <div class="announcement-card">
+
+            <div class="header">
+                <div class="header-icon">📢</div>
+                <h1>ANNOUNCEMENT</h1>
+            </div>
+
+            {% if n.image %}
+                <div class="announcement-with-image">
+                    <div class="image-container" onclick="openImage(('modal{{ forloop.counter }}'))">
+                        <img src="{{ n.image.url }}" alt="Announcement Image" id="announcementImage">
+                    </div>
+                    <div class="announcement-text">
+                        <h2>{{ n.title }}</h2>
+                        <h3>{{ n.heading }}</h3>
+                        <p>{{ n.description }}</p>
+                        <div class="date">📅 {{ n.date }}</div>
+                        <div class="tap-text">👆 Tap image to view full size</div>
+                    </div>
+                </div>
+            {% else %}
+                <div class="announcement-no-image">
+                    <h2>{{ n.title }}</h2>
+                    <h3>{{ n.heading }}</h3>
+                    <p>{{ n.description }}</p>
+                    <div class="date">📅 {{ n.date }}</div>
+                </div>
+            {% endif %}
+
+            <!-- Modal -->
+            <div class="modal" id="modal{{ forloop.counter }}" onclick="closeImage('modal{{ forloop.counter }}')">
+                <span class="close">&times;</span>
+                {% if n.image %}
+                    <img src="{{ n.image.url }}" id="fullImage" alt="Full Announcement">
+                {% else %}
+                    <img src="{% static 'images/placeholder.png' %}" id="fullImage" alt="Default Image">
+                {% endif %}
+            </div>
+
+        </div>
+   
+</div>
+
+<script>
+    function openImage(modalId) {
+        document.getElementById(modalId).style.display = "flex";
+    }
+    function closeImage(modalId) {
+        document.getElementById(modalId).style.display = "none";
+    }
+</script>
+
+ {% endfor %}
+ 
+{% endblock body %}

@@ -1,0 +1,26 @@
+{% extends 'home.html' %}
+
+{% block title %}Pending Appointments{% endblock title %}
+
+{% block body %}
+
+</head>
+
+    
+    <h1>📋 Pending Appointments</h1>
+    {% for appointment in appointments %}
+        <div>
+            <p><b>Provider:</b> {{ appointment.provider.username }}</p>
+            <p><b>Name:</b> {{ appointment.name }}</p>
+          
+            <p><b>Date:</b> {{ appointment.date }}</p>
+            <p><b>Time:</b> {{ appointment.time }}</p>
+            <p><b>Status:</b> {{ appointment.status }}</p>
+        </div>
+        <hr>
+    {% empty %}
+        <p>No pending appointments right now.</p>
+    {% endfor %}
+
+{% endblock body %}
+    

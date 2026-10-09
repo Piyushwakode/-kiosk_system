@@ -1,0 +1,118 @@
+{% extends 'home.html' %}
+
+{% block title %}Faculty Login{% endblock title %}
+
+{% block body %}
+<head>
+    <style>
+        /* Faculty Login Form Styling */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Login box */
+.container {
+    max-width: 400px;
+    margin: 80px auto;
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0px 4px 12px rgba(0,0,0,0.2);
+    text-align: center;
+}
+
+h1 {
+    color: #333;
+    margin-bottom: 25px;
+}
+
+/* Labels */
+label {
+    display: block;
+    text-align: left;
+    font-weight: bold;
+    margin-bottom: 6px;
+    color: #555;
+}
+
+/* Input fields */
+input[type="text"], 
+input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 18px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    outline: none;
+    transition: border 0.3s ease;
+}
+
+input[type="text"]:focus, 
+input[type="password"]:focus {
+    border: 1px solid #007bff;
+}
+
+/* Faculty Login button (red) */
+button {
+    width: 100%;
+    padding: 12px;
+    background: #dc3545; /* red */
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+button:hover {
+    background: #b52a37;
+}
+
+/* Error messages */
+div[style*="color:red"] {
+    margin-top: 15px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+
+    </style>
+</head> 
+
+
+<body>
+<div class="container" style="max-width:400px; margin:auto; margin-top:50px; text-align:center;">
+    <h1>Faculty Login</h1>
+   <form method="POST" action="{% url 'faculty_login' %}">
+   
+
+        {% csrf_token %}
+        
+        <label>Username:</label>
+        <input type="text" name="username" required placeholder="Enter username">
+        <br><br>
+        
+        <label>Password:</label>
+        <input type="password" name="password" required placeholder="Enter password">
+        <br><br>
+        
+        <button type="submit" style="padding:10px 20px; background:#007bff; color:white; border:none; border-radius:6px;">
+            Login
+        </button>
+    </form>
+    
+    {% if messages %}
+        <div style="color:red; margin-top:15px;">
+            {% for message in messages %}
+                {{ message }}
+            {% endfor %}
+        </div>
+    {% endif %}
+</div>
+</body>
+{% endblock body %}
+

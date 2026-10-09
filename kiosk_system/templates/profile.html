@@ -1,0 +1,87 @@
+{% extends 'home.html' %}
+
+{% block title %}Appointments{% endblock title %}
+
+{% block body %}
+<style>
+    .profile-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr); /* 4 cards per row */
+        gap: 20px;
+        padding: 20px;
+    }
+    .profile-card {
+        background: #fff;
+        border-radius: 12px;
+        padding: 20px;
+        text-align: center;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .profile-card:hover {
+        transform: translateY(-8px) scale(1.03);
+        box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    }
+    .profile-card img {
+        border-radius: 50%;
+        width: 100px;
+        height: 100px;
+        object-fit: cover;
+        margin-bottom: 10px;
+    }
+    .profile-card h3 {
+        margin: 10px 0;
+        font-size: 1.2rem;
+        color: #333;
+    }
+    .profile-card p {
+        font-size: 0.9rem;
+        color: #666;
+        min-height: 40px;
+    }
+    .profile-card a {
+        display: inline-block;
+        margin-top: 12px;
+        padding: 10px 15px;
+        background: linear-gradient(45deg, #ffbf00, #ff8000);
+        color: white;
+        text-decoration: none;
+        border-radius: 6px;
+        font-weight: bold;
+        transition: background 0.3s ease;
+    }
+    .profile-card a:hover {
+        background: linear-gradient(45deg, #ffd700, #ffa500);
+    }
+
+    /* Responsive tweak for mobile */
+    @media (max-width: 768px) {
+        .profile-grid {
+            grid-template-columns: repeat(2, 1fr); /* 2 per row on tablet */
+        }
+    }
+    @media (max-width: 480px) {
+        .profile-grid {
+            grid-template-columns: 1fr; /* 1 per row on phone */
+        }
+    }
+</style>
+
+<h1 style="text-align:center; margin:20px 0;">🟢 Available Profiles</h1>
+
+<div class="profile-grid">
+    {% for user in profiles %}
+        <div class="profile-card">
+            {% if user.profile.profile_photo %}
+                <img src="{{ user.profile.profile_photo.url }}" alt="Profile Photo">
+            {% endif %}
+            <h3>{{ user.username }}</h3>
+            <p>{{ user.profile.bio }}</p>
+            <a href="{% url 'book_appointment' user.username %}">Book Appointment</a>
+        </div>
+    {% empty %}
+        <p style="text-align:center;">No profiles available right now.</p>
+    {% endfor %}
+</div>
+{% endblock %}
+
